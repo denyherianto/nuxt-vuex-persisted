@@ -1,14 +1,15 @@
 <template>
 <div>
+  <div v-show="$store.state.localStorage.status">
+    localStorage
+    {{$store.state.localStorage.my_custom_value}}
+    <button @click="setUser()">Change User</button>
+  </div>
+  <!--
   <div>
     not_storaged
     {{$store.state.notStoraged.my_custom_value}}
     <button @click="$store.commit('notStoraged/increase')">increase</button>
-  </div>
-  <div v-show="$store.state.localStorage.status">
-    localStorage
-    {{$store.state.localStorage.my_custom_value}}
-    <button @click="$store.commit('localStorage/increase')">increase</button>
   </div>
   <div v-show="$store.state.foo.status">
     foo(localStorage)
@@ -23,5 +24,25 @@
     {{$store.state.sessionStorage.my_custom_value}}
     <button @click="$store.commit('sessionStorage/increase')">increase</button>
   </div>
+  -->
 </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  methods: {
+    setUser() {
+      const user = {
+        name: `local-saved-${this.count++}`,
+      }
+      console.log('user', user)
+      this.$store.commit('localStorage/SET_USER', user)
+    }
+  }
+}
+</script>
