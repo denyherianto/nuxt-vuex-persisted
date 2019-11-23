@@ -1,7 +1,10 @@
 export const state = () => ({
-  my_custom_value: 0
+  user: {},
+  token: ''
 })
 
 export const mutations = {
-  increase: state => state.my_custom_value++
+  SET_USER (state, user) {
+    state.user = user
+  }
 }
